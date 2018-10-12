@@ -192,18 +192,33 @@ window.onload = function () {
     });
     // 点击搜索时获取input中的内容进行搜索
     $(".search_right").click(function () {
-        $.each(city,function (indexs,vals) {
-            $.each(vals,function (i) {
-                if ($(".location .search input").val() == i) {
-                    ajaxs($(".location .search input").val());
-                    $(".location").css({"display":"none"});
-					$(".hide").css({"display":"block"});
-
-                }
-                
-            })
-        })
-        alert("请输入正确的城市名称");
+//      $.each(city,function (indexs,vals) {
+//          $.each(vals,function (i) {
+//              if ($(".location .search input").val() == i) {
+//                  ajaxs($(".location .search input").val());
+//                  $(".location").css({"display":"none"});
+//					$(".hide").css({"display":"block"});
+//					return;
+//              }
+//          })
+//      })
+//      alert("请输入正确的城市名称");
+        
+        if ($(".location .search input").html() == "取消") {
+        	$(".location .search input").val() == "";
+        }else{
+        	for (let i in city){
+        		for (let j in city[i]) {
+        			if ($(".location .search input").val() == j) {
+        				ajaxs($(".location .search input").val());
+        				$(".location").css({"display":"none"});
+						$(".hide").css({"display":"block"});
+						return;
+        			}
+        		}
+        	}
+        }
+        alert("请输入正确的城市名称");       
     });
 }
 	
